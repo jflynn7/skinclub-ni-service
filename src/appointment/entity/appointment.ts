@@ -1,35 +1,29 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne, CreateDateColumn, UpdateDateColumn,
-} from 'typeorm';
+
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';;
 import { Consultation } from '../../consultation/entity/consultation';
+import { UserProfile } from '../../user-profile/entity/user-profile';
 
 @Entity()
-export class Treatment {
+export class Appointment {
 
   /**==============================================
    * Entity fields
    **=============================================*/
 
-  @Column()
-  name: string;
-
-  @Column({ type: 'text', nullable: true })
-  description: string;
+  @Column({ type: 'timestamp' })
+  appointmentDate: Date;
 
   @Column()
-  duration: string;
-
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
-  price: number;
+  status: string;
 
   /**==============================================
    * Relationships
    **=============================================*/
 
-  @ManyToOne(() => Consultation, (consultation) => consultation.treatments)
+  @ManyToOne(() => UserProfile, (userProfile) => userProfile.appointments)
+  userProfile: UserProfile;
+
+  @ManyToOne(() => Consultation, (consultation) => consultation.appointments)
   consultation: Consultation;
 
   /**==============================================
@@ -37,7 +31,7 @@ export class Treatment {
    **=============================================*/
 
   @PrimaryGeneratedColumn('uuid')
-  treatmentId: string;
+  appointmentId: string;
 
   @CreateDateColumn()
   createdDate: Date;

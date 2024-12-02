@@ -1,22 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UserService } from '../service/user.service';
 import { User } from '../entity/user';
+import { ApiResponse } from '../../database/api-response.type';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('')
+  @Get('/list')
   getAllUsers(): Promise<User[]> {
     return this.userService.findAll();
   }
 
-  @Get('/create')
-  createUser(): Promise<User[]> {
-    const user: User = new User();
-    user.firstName = 'Joe';
-    user.surname = 'Flynn';
-    user.email = 'joe@prettyfly.it';
+  @Post('/create')
+  createUser(@Body() user: User): Promise<ApiResponse<User>> {
     return this.userService.create(user);
   }
 }

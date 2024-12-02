@@ -1,76 +1,53 @@
 // user.ts
 
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Subscription } from '../../subscription/entity/subscription';
-import { Order } from '../../order/entity/order';
-import { Consultation } from '../../consultation/entity/consultation';
-import { Treatment } from '../../treatment/entity/treatment';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn, CreateDateColumn, UpdateDateColumn,
+} from 'typeorm';
+import { UserProfile } from '../../user-profile/entity/user-profile';
+import { IsEmail, IsStrongPassword } from 'class-validator';
 
 @Entity()
 export class User {
 
-  @PrimaryGeneratedColumn() private _id: number;
+  /**==============================================
+   * Entity fields
+   **=============================================*/
 
-  @Column() private _firstName: string;
+  @Column({ unique: true })
+  @IsEmail()
+  email: string;
 
-  @Column() private _surname: string;
+  @Column()
+  @IsStrongPassword({ minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1 })
+  password: string;
 
-  @Column() private _email: string;
+  /**==============================================
+   * Relationships
+   **=============================================*/
 
-  @Column() private _password: string;
+  @OneToOne(() => UserProfile, {
+    onUpdate: 'CASCADE',
+    eager: true,
+    cascade: true,
+  })
+  @JoinColumn()
+  userProfile: UserProfile;
 
-  @OneToMany(() => Subscription, (subscription) => subscription.user)
-  subscriptions: Subscription[];
+  /**==============================================
+   * Generated fields
+   **=============================================*/
 
-  @OneToMany(() => Order, (order) => order.user)
-  orders: Order[];
+  @PrimaryGeneratedColumn('uuid') id: string;
 
-  @OneToMany(() => Consultation, (consultation) => consultation.user)
-  consultations: Consultation[];
+  @CreateDateColumn()
+  createdDate?: Date;
 
-  @OneToMany(() => Treatment, (treatment) => treatment.user)
-  treatments: Treatment[];
+  @UpdateDateColumn()
+  lastUpdated?: Date;
 
-  constructor() {
-  }
-
-  get id(): number {
-    return this._id;
-  }
-
-  set id(value: number) {
-    this._id = value;
-  }
-
-  get firstName(): string {
-    return this._firstName;
-  }
-
-  set firstName(value: string) {
-    this._firstName = value;
-  }
-
-  get surname(): string {
-    return this._surname;
-  }
-
-  set surname(value: string) {
-    this._surname = value;
-  }
-
-  get email(): string {
-    return this._email;
-  }
-
-  set email(value: string) {
-    this._email = value;
-  }
-
-  get password(): string {
-    return this._password;
-  }
-
-  set password(value: string) {
-    this._password = value;
-  }
+  constructor() {}
 }

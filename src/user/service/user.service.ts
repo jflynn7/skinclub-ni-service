@@ -2,6 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { User } from '../entity/user';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { SuccessResponse } from '../../database/success-response';
+import { ErrorResponse } from '../../database/error-response';
+import { ApiResponse } from '../../database/api-response.type';
+import { validate } from 'class-validator';
 
 @Injectable()
 export class UserService {
@@ -11,10 +15,10 @@ export class UserService {
   ) {}
 
   findAll(): Promise<User[]> {
-    return this.userRepository.find();
+    return this.userRepository.find({ relations: ['userProfile'] });
   }
 
-  findOne(id: number): Promise<User | null> {
+  findOne(id: string): Promise<User | null> {
     return this.userRepository.findOneBy({ id });
   }
 
@@ -22,8 +26,19 @@ export class UserService {
     await this.userRepository.delete(id);
   }
 
-  async create(user: User) {
-    await this.userRepository.save([user]);
-    return this.userRepository.find();
+  async create(user: User): Promise<ApiResponse<User>> {
+    const duplicateUsers = await this.checkForDuplicates(user);
+    const isValid = await validate(user as User);
+    console.log('VALID', isValid);
+    if (duplicateUsers?.length === 0) {
+      await this.userRepository.save(user);
+      return new SuccessResponse<User>(200, user);
+    } else {
+      return new ErrorResponse<User>(500, 'User already exists', user);
+    }
+  }
+
+  private async checkForDuplicates(user: User) {
+    return this.userRepository.find({ where: [{ email: user.email }] });
   }
 }
