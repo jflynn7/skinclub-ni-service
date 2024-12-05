@@ -21,10 +21,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "preinstall": "npm install -g @nestjs/cli",
     "prestart:prod": "npm run build",
     "postinstall": "npm run prestart:prod",
-    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
+    "heroku-postbuild": "npm install && npm run build",
     "generate-module": "node scripts/generate"
   },
   "dependencies": {
