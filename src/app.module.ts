@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
-import { postgresConfig, postgresDeployedConfig } from './database/postgres.config';
+import { postgresDeployedConfig } from './database/postgres.config';
 import { TreatmentModule } from './treatment/treatment.module';
 import { ConsultationModule } from './consultation/consultation.module';
 import { SubscriptionModule } from './subscription/subscription.module';

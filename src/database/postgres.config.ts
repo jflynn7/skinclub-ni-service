@@ -19,5 +19,6 @@ export const postgresDeployedConfig: TypeOrmModuleOptions = {
   password: 'p9f645b4784a3b6a7dec4157d82a0ed957086419d0282b17b15e310d79797ce35',
   database: 'drmbdgf9clg5a',
   synchronize: true,
+  ssl: true,
   autoLoadEntities: true,
 };
