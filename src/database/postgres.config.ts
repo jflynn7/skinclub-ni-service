@@ -21,4 +21,9 @@ export const postgresDeployedConfig: TypeOrmModuleOptions = {
   synchronize: true,
   ssl: true,
   autoLoadEntities: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 };
