@@ -10,7 +10,6 @@ import { Consultation } from '../../consultation/entity/consultation';
 import { Appointment } from '../../appointment/entity/appointment';
 import { Subscription } from '../../subscription/entity/subscription';
 import { IsDate } from 'class-validator';
-import { Transform } from 'class-transformer';
 import { TransformDate } from '../../validators/date-transform.validator';
 
 @Entity()
