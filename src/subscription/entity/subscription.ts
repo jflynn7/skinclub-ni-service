@@ -1,11 +1,17 @@
 // subscription.entity.ts
 
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { UserProfile } from '../../user-profile/entity/user-profile';
 
 @Entity()
 export class Subscription {
-
   /**==============================================
    * Entity fields
    **=============================================*/

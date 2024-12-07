@@ -7,14 +7,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Treatment } from '../../treatment/entity/treatment';
 import { ConsultationNote } from './consultations-note';
 import { UserProfile } from '../../user-profile/entity/user-profile';
-import { Appointment } from '../../appointment/entity/appointment';
 
 @Entity()
 export class Consultation {
-
   /**==============================================
    * Entity fields
    **=============================================*/
@@ -40,12 +37,6 @@ export class Consultation {
 
   @ManyToOne(() => UserProfile, (userProfile) => userProfile.consultations)
   userProfile: UserProfile;
-
-  @OneToMany(() => Treatment, (treatment) => treatment.consultation)
-  treatments: Treatment[];
-
-  @OneToMany(() => Appointment, (appointment) => appointment.consultation)
-  appointments: Appointment[];
 
   @OneToMany(() => ConsultationNote, (note) => note.consultation)
   notes: ConsultationNote[];

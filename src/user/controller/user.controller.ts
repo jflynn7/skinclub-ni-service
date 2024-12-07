@@ -3,6 +3,8 @@ import { UserService } from '../service/user.service';
 import { User } from '../entity/user';
 import { ApiResponse } from '../../database/api-response.type';
 import { EmailService } from '../../email/service/email.service';
+import { BookingConfirmationDTO } from '../../email/model/booking-confirmation.dto';
+import { WelcomeEmailDto } from '../../email/model/welcome-email.dto';
 
 @Controller('user')
 export class UserController {
@@ -21,10 +23,15 @@ export class UserController {
     return this.userService.create(user);
   }
 
-  @Post('/email')
-  sendEmail(
-    @Body() testData: { name: string; username: string },
+  @Post('/email/welcome')
+  sendEmail(@Body() testData: WelcomeEmailDto): Promise<ApiResponse<string>> {
+    return this.emailService.sendWelcomeEmail(testData);
+  }
+
+  @Post('/email/confirmation/practitioner')
+  sendBookingConfirmationPractitioner(
+    @Body() bookingDetail: BookingConfirmationDTO,
   ): Promise<ApiResponse<string>> {
-    return this.emailService.sendWelcomeEmail(testData.name, testData.username);
+    return this.emailService.sendPractitionerBookingConfirmation(bookingDetail);
   }
 }

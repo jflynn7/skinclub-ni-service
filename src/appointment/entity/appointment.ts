@@ -1,11 +1,15 @@
-
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';;
-import { Consultation } from '../../consultation/entity/consultation';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { UserProfile } from '../../user-profile/entity/user-profile';
 
 @Entity()
 export class Appointment {
-
   /**==============================================
    * Entity fields
    **=============================================*/
@@ -22,9 +26,6 @@ export class Appointment {
 
   @ManyToOne(() => UserProfile, (userProfile) => userProfile.appointments)
   userProfile: UserProfile;
-
-  @ManyToOne(() => Consultation, (consultation) => consultation.appointments)
-  consultation: Consultation;
 
   /**==============================================
    * Generated fields

@@ -3,6 +3,8 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
+  OneToOne,
+  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -11,10 +13,10 @@ import { Appointment } from '../../appointment/entity/appointment';
 import { Subscription } from '../../subscription/entity/subscription';
 import { IsDate } from 'class-validator';
 import { TransformDate } from '../../validators/date-transform.validator';
+import { Address } from './address';
 
 @Entity()
 export class UserProfile {
-
   /**==============================================
    * Entity Fields
    **=============================================*/
@@ -33,7 +35,12 @@ export class UserProfile {
   @TransformDate()
   dateOfBirth?: Date;
 
-  @Column({ nullable: true })
+  @OneToOne(() => Address, {
+    onUpdate: 'CASCADE',
+    eager: true,
+    cascade: true,
+  })
+  @JoinColumn()
   address?: string;
 
   /**==============================================
