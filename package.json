@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "NestJS Service with React UI for clinic bookings and patient management.",
   "main": "index.js",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "preinstall": "npm install -g @nestjs/cli",
-    "prestart:prod": "cd client && npm install && npm run build && cd ../service && npm run build",
+    "prestart:prod": "npm run build-client && npm run build-service",
     "postinstall": "npm run prestart:prod",
+    "build-service": "cd service && npm install --only=dev --no-shrinkwrap && npm run build",
+    "build-client": "cd client && npm install --only=dev --no-shrinkwrap && npm run build",
     "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
     "start:local": "cd service && APP_ENV=local node dist/main",
     "start:prod": "cd service && APP_ENV=production node dist/main"
