@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import * as dotenv from 'dotenv';
 import * as process from 'node:process';
-import { postgresConfig } from './database/postgres.config';
 
 dotenv.config();
 
