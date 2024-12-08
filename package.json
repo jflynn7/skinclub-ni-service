@@ -14,7 +14,8 @@
     "build-client": "cd client && npm install --only=dev --no-shrinkwrap && npm run build",
     "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
     "start:local": "cd service && APP_ENV=local node dist/main",
-    "start:prod": "cd service && APP_ENV=production node dist/main"
+    "start:prod": "cd service && APP_ENV=production node dist/main",
+    "build": "cd service && npm run build"
   },
   "author": "",
   "license": "ISC"
