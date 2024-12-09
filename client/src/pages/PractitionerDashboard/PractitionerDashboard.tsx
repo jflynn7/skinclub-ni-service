@@ -1,7 +1,3 @@
-import React from 'react';
-
-export type PractitionerdashboardProps = {}
-
-export default function Practitionerdashboard({}: PractitionerdashboardProps) {
+export default function Practitionerdashboard() {
     return (<div className="PractitionerDashboard"/>);
 }
