@@ -13,9 +13,7 @@ const sslConfig = (env: string) =>
       }
     : {};
 
-export const postgresConfig = (
-  env: string,
-): TypeOrmModuleOptions => ({
+export const postgresConfig = (env: string): TypeOrmModuleOptions => ({
   type: 'postgres',
   host: getConfig(env).DATABASE_HOST,
   port: 5432,
