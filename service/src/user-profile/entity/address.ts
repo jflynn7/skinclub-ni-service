@@ -34,7 +34,7 @@ export class Address {
    * Generated Fields
    **=============================================*/
   @PrimaryGeneratedColumn('uuid')
-  addressId?: string;
+  id?: string;
 
   @CreateDateColumn()
   createdDate?: Date;

@@ -15,7 +15,12 @@
     "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
     "start:local": "cd service && APP_ENV=local node dist/main",
     "start:prod": "cd service && APP_ENV=production node dist/main",
-    "build": "cd service && npm run build"
+    "build": "cd service && npm run build",
+    "start:client": "cd client && npm run dev",
+    "start": "concurrently \"npm run start:local\" \"npm run start:client\""
+  },
+  "dependencies": {
+    "concurrently": "^9.1.0"
   },
   "author": "",
   "license": "ISC"

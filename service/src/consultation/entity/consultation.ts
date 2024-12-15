@@ -46,7 +46,7 @@ export class Consultation {
    **=============================================*/
 
   @PrimaryGeneratedColumn('uuid')
-  consultationId: string;
+  id: string;
 
   @CreateDateColumn()
   createdDate: Date;

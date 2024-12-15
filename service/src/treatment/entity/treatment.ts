@@ -29,7 +29,7 @@ export class Treatment {
    **=============================================*/
 
   @PrimaryGeneratedColumn('uuid')
-  treatmentId: string;
+  id: string;
 
   @CreateDateColumn()
   createdDate: Date;

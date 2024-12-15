@@ -1,17 +1,39 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Consultation } from './consultation';
 
 @Entity()
 export class ConsultationNote {
-  @PrimaryGeneratedColumn('uuid')
-  note_id: string;
+  /**==============================================
+   * Entity fields
+   **=============================================*/
+
+  @Column({ type: 'text' })
+  noteContent: string;
+
+  /**==============================================
+   * Relationships
+   **=============================================*/
 
   @ManyToOne(() => Consultation, (consultation) => consultation.notes)
   consultation: Consultation;
 
-  @Column({ type: 'text' })
-  note_content: string;
+  /**==============================================
+   * Generated fields
+   **=============================================*/
+
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdDate: Date;
+
+  @UpdateDateColumn()
+  lastUpdated: Date;
 }

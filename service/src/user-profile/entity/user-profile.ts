@@ -61,7 +61,7 @@ export class UserProfile {
    **=============================================*/
 
   @PrimaryGeneratedColumn('uuid')
-  profileId?: string;
+  id?: string;
 
   @CreateDateColumn()
   createdDate?: Date;

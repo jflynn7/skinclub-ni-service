@@ -34,7 +34,7 @@ export class Subscription {
    **=============================================*/
 
   @PrimaryGeneratedColumn()
-  subscriptionId: number;
+  id: number;
 
   @CreateDateColumn()
   createdDate: Date;

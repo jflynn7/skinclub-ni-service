@@ -32,7 +32,7 @@ export class Appointment {
    **=============================================*/
 
   @PrimaryGeneratedColumn('uuid')
-  appointmentId: string;
+  id: string;
 
   @CreateDateColumn()
   createdDate: Date;

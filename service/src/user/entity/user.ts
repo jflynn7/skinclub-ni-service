@@ -5,14 +5,15 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToOne,
-  JoinColumn, CreateDateColumn, UpdateDateColumn,
+  JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { UserProfile } from '../../user-profile/entity/user-profile';
 import { IsEmail, IsStrongPassword } from 'class-validator';
 
 @Entity()
 export class User {
-
   /**==============================================
    * Entity fields
    **=============================================*/
@@ -47,7 +48,8 @@ export class User {
    * Generated fields
    **=============================================*/
 
-  @PrimaryGeneratedColumn('uuid') id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @CreateDateColumn()
   createdDate?: Date;
