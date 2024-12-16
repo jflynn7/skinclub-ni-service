@@ -43,9 +43,9 @@ export default function ForgotPassword({ open, handleClose }: ForgotPasswordProp
           fullWidth
         />
       </DialogContent>
-      <DialogActions sx={{ justifyContent: 'center', paddingBottom: '1.5em' }}>
-        <BaseButton color={'secondary'} onClick={handleClose} label={'Cancel'}/>
-        <BaseButton color={'primary'} type="submit" label={'Continue'}/>
+      <DialogActions sx={{ justifyContent: 'center', padding: '0 1.5em 2em' }}>
+        <BaseButton fullWidth={true} color={'secondary'} onClick={handleClose} label={'Cancel'}/>
+        <BaseButton fullWidth={true} color={'primary'} type="submit" label={'Continue'}/>
       </DialogActions>
     </Dialog>
   );

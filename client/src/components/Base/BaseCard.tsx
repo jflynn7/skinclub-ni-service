@@ -7,10 +7,11 @@ interface BaseCardProps extends PropsWithChildren, CardProps {
 }
 export const BaseCard = (props: BaseCardProps) => {
   const { title, children } = props;
-  return <Card title={title} elevation={2} sx={{
+  return <Card title={title} elevation={theme.card.elevation} sx={{
     borderRadius: theme.borderRadius,
     margin: '1em 0',
-    padding: '1em'
+    padding: '1em',
+    border: theme.card.border
   }} {...props}>
     {children}
   </Card>;

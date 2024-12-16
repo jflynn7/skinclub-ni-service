@@ -7,7 +7,7 @@ import { EmailService } from '../email/service/email.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
-  exports: [TypeOrmModule],
+  exports: [TypeOrmModule, UserService],
   providers: [UserService, EmailService],
   controllers: [UserController],
 })

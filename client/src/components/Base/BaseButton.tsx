@@ -12,7 +12,6 @@ export const BaseButton = (props: BaseButtonProps) => {
     borderRadius: theme.borderRadius,
     padding: '0.75em',
     minHeight: '56px',
-    minWidth: '14em',
     backgroundColor: color === 'primary' ? theme.palette.primary : '#FFFFFF',
     color: color === 'primary' ? '#FFFFFF' : theme.palette.primary,
     border: color === 'primary' ? `1px solid transparent` : `1px solid ${theme.palette.primary}`

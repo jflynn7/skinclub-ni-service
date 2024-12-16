@@ -16,13 +16,17 @@ export class UserProfileService {
   async updateUserProfile(
     userId: string,
     userProfile: UserProfile,
-  ): Promise<ApiResponse<User>> {
+  ): Promise<ApiResponse<User> | ErrorResponse<any>> {
     const user: User = await this.userRepository.findOneBy({ id: userId });
-    user.userProfile = {
-      ...user.userProfile,
-      ...userProfile,
-    };
-    return this.saveUserProfile(user);
+    if (user) {
+      user.userProfile = {
+        ...user.userProfile,
+        ...userProfile,
+      };
+      return this.saveUserProfile(user);
+    } else {
+      return new ErrorResponse(404, 'No user found', { oops: 'Oopsy' });
+    }
   }
 
   private async saveUserProfile(user: User): Promise<ApiResponse<User>> {

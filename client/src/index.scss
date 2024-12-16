@@ -1,9 +1,10 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
+  background-color: #FFF7EE !important;
+
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.63);
-  background-color: rgba(255, 255, 255, 0.85);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -12,11 +13,12 @@
 }
 
 body {
+  background-color: #FFF7EE;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #FFF7EE;
   }
 }
