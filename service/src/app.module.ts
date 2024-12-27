@@ -11,7 +11,7 @@ import { AppointmentModule } from './appointment/appointment.module';
 import { EmailModule } from './email/email.module';
 import * as process from 'node:process';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { AuthenticationModule } from './authentication/authentication.module';
+import { ContentModule } from './content/content.module';
 import * as path from 'node:path';
 
 @Module({
@@ -28,7 +28,7 @@ import * as path from 'node:path';
     UserProfileModule,
     AppointmentModule,
     EmailModule,
-    AuthenticationModule,
+    ContentModule,
   ],
   controllers: [AppController],
   providers: [],

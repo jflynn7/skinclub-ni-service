@@ -13,7 +13,7 @@
     "build-service": "cd service && npm install --only=dev --no-shrinkwrap && npm run build",
     "build-client": "cd client && npm install --only=dev --no-shrinkwrap && npm run build",
     "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
-    "start:local": "cd service && APP_ENV=local node dist/main",
+    "start:local": "cd service && APP_ENV=local nest start --watch",
     "start:prod": "cd service && APP_ENV=production node dist/main",
     "build": "cd service && npm run build",
     "start:client": "cd client && npm run dev",

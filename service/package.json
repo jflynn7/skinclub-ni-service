@@ -21,7 +21,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "generate-module": "node scripts/generate",
+    "generate-module": "node ../scripts/generate",
     "env-local": "cp .env.local .env",
     "env-prod": "cp .env.production .env"
   },
