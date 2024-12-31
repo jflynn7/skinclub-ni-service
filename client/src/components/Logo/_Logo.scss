@@ -1,0 +1,28 @@
+.logo {
+  margin: 0.6em 0;
+
+  &.xs {
+    height: 10px;
+    width: 10px;
+  }
+
+  &.sm {
+    height: 20px;
+    width: 20px;
+  }
+
+  &.md {
+    height: 50px;
+    width: 50px;
+  }
+
+  &.lg {
+    height: 65px;
+    width: 65px;
+  }
+
+  &.xl {
+    height: 100px;
+    width: 100px;
+  }
+}
