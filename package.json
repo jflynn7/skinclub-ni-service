@@ -16,11 +16,7 @@
     "start:local": "cd service && APP_ENV=local nest start --watch",
     "start:prod": "cd service && APP_ENV=production node dist/main",
     "build": "cd service && npm run build",
-    "start:client": "cd client && npm run dev",
-    "start": "concurrently \"npm run start:local\" \"npm run start:client\""
-  },
-  "dependencies": {
-    "concurrently": "^9.1.0"
+    "start:client": "cd client && npm run dev"
   },
   "author": "",
   "license": "ISC"
