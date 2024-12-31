@@ -10,13 +10,13 @@
     "preinstall": "npm install -g @nestjs/cli",
     "prestart:prod": "npm run build-client && npm run build-service",
     "postinstall": "npm run prestart:prod",
-    "build-service": "cd service && npm install --only=dev --no-shrinkwrap && npm run build",
-    "build-client": "cd client && npm install --only=dev --no-shrinkwrap && npm run build",
+    "build-service": "cd service && npm install --no-shrinkwrap && npm run build",
+    "build-client": "cd client && npm install --no-shrinkwrap && npm run build",
     "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
     "start:local": "cd service && APP_ENV=local nest start --watch",
     "start:prod": "cd service && APP_ENV=production node dist/main",
     "build": "cd service && npm run build",
-    "start:client": "cd v1 && npm run dev",
+    "start:client": "cd client && npm run dev",
     "start": "concurrently \"npm run start:local\" \"npm run start:client\""
   },
   "dependencies": {
