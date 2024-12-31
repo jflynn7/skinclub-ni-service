@@ -12,7 +12,7 @@
     "postinstall": "npm run prestart:prod",
     "build-service": "cd service && npm install --no-shrinkwrap && npm run build",
     "build-client": "cd client && npm install --no-shrinkwrap && npm run build",
-    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
+    "heroku-postbuild": "npm install --no-shrinkwrap && npm run build",
     "start:local": "cd service && APP_ENV=local nest start --watch",
     "start:prod": "cd service && APP_ENV=production node dist/main",
     "build": "cd service && npm run build",
