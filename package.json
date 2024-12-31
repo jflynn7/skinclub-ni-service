@@ -1,7 +1,7 @@
 {
-  "name": "skinclub-ni",
+  "name": "prettyfly-basecamp",
   "version": "1.0.0",
-  "description": "NestJS Service with React UI for clinic bookings and patient management.",
+  "description": "NestJS Service with React UI for Prettyfly Web Applications.",
   "main": "index.js",
   "engines": {
     "node": "20.x"
