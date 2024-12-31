@@ -6,6 +6,11 @@ import { Content } from '../entity/content';
 export class ContentController {
   constructor(private readonly contentService: ContentService) {}
 
+  @Get('all')
+  getAllContent() {
+    return this.contentService.getAllContent();
+  }
+
   @Get(':contentKey')
   getContentByKey(@Param('contentKey') contentKey: string) {
     return this.contentService.getContentValue(contentKey);

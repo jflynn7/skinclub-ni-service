@@ -14,6 +14,9 @@ export class ContentItem {
    * Entity fields
    **=============================================*/
 
+  @Column({ nullable: true })
+  contentOrder: number;
+
   @Column()
   value: string;
 

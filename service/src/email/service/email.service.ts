@@ -19,7 +19,7 @@ export class EmailService {
     welcome: 'welcome',
     confirmation: {
       practitioner: 'booking-confirmation-practitioner',
-      client: 'booking-confirmation-client',
+      client: 'booking-confirmation-v1',
     },
   };
 

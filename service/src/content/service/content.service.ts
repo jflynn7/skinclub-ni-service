@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Content } from '../entity/content';
 import { Repository } from 'typeorm';
 import { ApiResponse } from '../../database/api-response.type';
 import { SuccessResponse } from '../../database/success-response';
 import { ErrorResponse } from '../../database/error-response';
 import { ContentItem } from '../entity/content-item';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ContentService {
@@ -15,6 +15,10 @@ export class ContentService {
     @InjectRepository(ContentItem)
     private contentItemRepository: Repository<ContentItem>,
   ) {}
+
+  async getAllContent() {
+    return this.contentRepository.find({ relations: ['contentItems'] });
+  }
 
   async setContentValue(contentKey: string, contentValue: Content) {
     const value: Content = await this.findOneByContentKey(contentKey);

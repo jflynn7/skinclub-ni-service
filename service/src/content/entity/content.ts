@@ -17,6 +17,9 @@ export class Content {
   @Column()
   contentKey: string;
 
+  @Column()
+  contentTitle?: string;
+
   /**==============================================
    * Relationships
    **=============================================*/
