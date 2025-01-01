@@ -8,8 +8,7 @@
   },
   "scripts": {
     "preinstall": "npm install -g @nestjs/cli",
-    "prestart:prod": "npm run build-client && npm run build-service",
-    "postinstall": "npm run prestart:prod",
+    "postinstall": "npm run build-client && npm run build-service",
     "build-service": "cd service && npm install --no-shrinkwrap && npm run build",
     "build-client": "cd client && npm install --no-shrinkwrap && npm run build",
     "heroku-postbuild": "npm install --no-shrinkwrap && npm run build",
