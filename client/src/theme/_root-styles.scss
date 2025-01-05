@@ -8,6 +8,20 @@ $breakpoint-md: '62em';
 $breakpoint-lg: '75em';
 $breakpoint-xl: '88em';
 
+/* For light mode */
+:root[data-mantine-color-scheme="light"] body {
+  --mantine-color-body: whitesmoke;
+  --header-background-color: white;
+  --card-background-color: white;
+}
+
+/* For dark mode */
+:root[data-mantine-color-scheme="dark"] body {
+  --mantine-color-body: #282827;
+  --header-background-color: #333333;
+  --card-background-color: #333333
+}
+
 @function rem($value) {
   @return #{math.div(math.div($value, $value * 0 + 1), 16)}rem;
 }

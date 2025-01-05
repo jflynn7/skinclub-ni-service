@@ -1,5 +1,5 @@
 export interface EntityDTO {
-  id: string;
-  createdDate: Date;
-  lastUpdated: Date;
+  id?: string;
+  createdDate?: Date;
+  lastUpdated?: Date;
 }

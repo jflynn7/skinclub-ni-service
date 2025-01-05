@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BaseTable, { TableHeader } from "@/components/base/BaseTable/BaseTable";
 import { fetchData } from "@/services/http.service";
 import { UserDTO } from "@/types/user.dto";
+import PageLayout from "@/pages/PageLayout/PageLayout";
 
 export function UserListPage() {
   const headers: TableHeader[] = [
@@ -20,5 +21,9 @@ export function UserListPage() {
       () => console.log("Sad"),
     );
   }, []);
-  return <BaseTable headers={headers} dataItems={users} />;
+  return (
+    <PageLayout>
+      <BaseTable headers={headers} dataItems={users} />
+    </PageLayout>
+  );
 }

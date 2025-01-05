@@ -3,15 +3,15 @@ import { EntityDTO } from "@/types/entity.dto";
 export interface UserDTO extends EntityDTO {
   email: string;
   password: string;
-  userProfile: UserProfileDTO;
+  userProfile?: UserProfileDTO;
 }
 
 export interface UserProfileDTO extends EntityDTO {
   firstName: string;
   lastName: string;
-  phoneNumber: string;
-  dateOfBirth: Date;
-  address: AddressDTO;
+  phoneNumber?: string;
+  dateOfBirth?: Date;
+  address?: AddressDTO;
 }
 
 export interface AddressDTO extends EntityDTO {

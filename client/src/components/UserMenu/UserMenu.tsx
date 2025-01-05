@@ -1,86 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { IconChevronDown } from "@tabler/icons-react";
+import cx from "clsx";
+import { Avatar, Group, Menu, Text, UnstyledButton } from "@mantine/core";
+
+import "./_UserMenu.scss";
 import {
-  IconChevronDown,
-  IconHeart,
-  IconLogout,
-  IconMessage,
-  IconPlayerPause,
-  IconSettings,
-  IconStar,
-  IconSwitchHorizontal,
-  IconTrash,
-} from '@tabler/icons-react';
-import cx from 'clsx';
-import { Avatar, Group, Menu, Text, UnstyledButton } from '@mantine/core';
+  fullName,
+  MenuItem,
+  MenuObject,
+  user,
+  userMenuConfig,
+} from "@/config/user-menu.config";
+import { UserDTO } from "@/types/user.dto";
+import { createKey } from "@/utils/object.utils";
 
-import './_UserMenu.scss';
-
-import { theme } from '@/theme/theme';
-
-const user = {
-  name: 'Jane Spoonfighter',
-  email: 'janspoon@fighter.dev',
-  image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png',
-};
-
-export default function Usermenu() {
+export default function UserMenu() {
   const [userMenuOpened, setUserMenuOpened] = useState(false);
   return (
     <Menu
       width={260}
       position="bottom-end"
-      transitionProps={{ transition: 'pop-top-right' }}
+      transitionProps={{ transition: "pop-top-right" }}
       onClose={() => setUserMenuOpened(false)}
       onOpen={() => setUserMenuOpened(true)}
       withinPortal
     >
       <Menu.Target>
-        <UnstyledButton className={cx('user', { ['userActive']: userMenuOpened })}>
+        <UnstyledButton
+          className={cx("user", { ["userActive"]: userMenuOpened })}
+        >
           <Group gap={7}>
-            <Avatar src={user.image} alt={user.name} radius="xl" size={20} />
+            <Avatar
+              src={user.image}
+              alt={fullName(user)}
+              radius="xl"
+              size={20}
+            />
             <Text fw={500} size="sm" lh={1} mr={3}>
-              {user.name}
+              {fullName(user)}
             </Text>
             <IconChevronDown size={12} stroke={1.5} />
           </Group>
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item
-          leftSection={<IconHeart size={16} color={theme.colors?.red?.[6]} stroke={1.5} />}
-        >
-          Liked posts
-        </Menu.Item>
-        <Menu.Item
-          leftSection={<IconStar size={16} color={theme.colors?.yellow?.[6]} stroke={1.5} />}
-        >
-          Saved posts
-        </Menu.Item>
-        <Menu.Item
-          leftSection={<IconMessage size={16} color={theme.colors?.blue?.[6]} stroke={1.5} />}
-        >
-          Your comments
-        </Menu.Item>
-
-        <Menu.Label>Settings</Menu.Label>
-        <Menu.Item leftSection={<IconSettings size={16} stroke={1.5} />}>
-          Account settings
-        </Menu.Item>
-        <Menu.Item leftSection={<IconSwitchHorizontal size={16} stroke={1.5} />}>
-          Change account
-        </Menu.Item>
-        <Menu.Item leftSection={<IconLogout size={16} stroke={1.5} />}>Logout</Menu.Item>
-
-        <Menu.Divider />
-
-        <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item leftSection={<IconPlayerPause size={16} stroke={1.5} />}>
-          Pause subscription
-        </Menu.Item>
-        <Menu.Item color="red" leftSection={<IconTrash size={16} stroke={1.5} />}>
-          Delete account
-        </Menu.Item>
+        <UserMenuItems />
       </Menu.Dropdown>
     </Menu>
   );
 }
+
+export const UserMenuItems = () => {
+  return userMenuConfig(user as unknown as UserDTO).menuItems.map(
+    (itemConfig: MenuItem | MenuObject, idx: number) => {
+      if (!(itemConfig as MenuObject).type) {
+        const { icon, route, label } = itemConfig as MenuItem;
+        const Icon = icon;
+        return (
+          <Menu.Item
+            key={createKey("userMenu", idx)}
+            onClick={() => console.log(route)}
+            leftSection={<Icon size={16} stroke={1.5} />}
+          >
+            {label}
+          </Menu.Item>
+        );
+      }
+      return <Menu.Divider key={createKey("userMenu", idx)} />;
+    },
+  );
+};

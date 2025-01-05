@@ -1,9 +1,9 @@
-import React from 'react';
-import { expect } from 'chai';
-import Usermenu from './UserMenu';
+import React from "react";
+import { expect } from "chai";
+import UserMenu from "./UserMenu";
 
-describe('Spec Usermenu', function () {
-    it('it exists', () => {
-        expect(Usermenu).to.be.ok;
-    });
+describe("Spec Usermenu", function () {
+  it("it exists", () => {
+    expect(UserMenu).to.be.ok;
+  });
 });
