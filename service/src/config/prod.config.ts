@@ -10,4 +10,6 @@ export const prodConfig = {
   AWS_UPLOAD_BUCKET_NAME: 'skinclub-ni-uploads',
   AWS_UPLOAD_ACCESS_ID: 'AKIAVVZOONPKXVQ3OLO7',
   AWS_UPLOAD_ACCESS_KEY: '4iaTcvxjokfwy51BHPT1pf3vysx8alXROeDcxjhr',
+  JWT_SECRET: 'some-prod-jwt-secret',
+  JWT_EXPIRATION_TIME: 60 * 60,
 };
