@@ -14,6 +14,7 @@ import { Subscription } from '../../subscription/entity/subscription';
 import { IsDate } from 'class-validator';
 import { TransformDate } from '../../validators/date-transform.validator';
 import { Address } from './address';
+import { Upload } from '../../upload/entity/upload';
 
 @Entity()
 export class UserProfile {
@@ -46,6 +47,10 @@ export class UserProfile {
   /**==============================================
    * Relationships
    **=============================================*/
+
+  @OneToOne(() => Upload)
+  @JoinColumn()
+  avatar?: Upload;
 
   @OneToMany(() => Consultation, (consultation) => consultation.userProfile)
   consultations?: Consultation[];

@@ -16,7 +16,10 @@ export class UploadService {
     private uploadRepository: Repository<Upload>,
   ) {}
 
-  async uploadPublicFile(dataBuffer: Buffer, filename: string) {
+  async uploadPublicFile(
+    dataBuffer: Buffer,
+    filename: string,
+  ): Promise<Upload> {
     const s3: S3 = new S3();
     const uploadResult = await s3
       .upload({
@@ -30,8 +33,7 @@ export class UploadService {
       key: uploadResult.Key,
       url: uploadResult.Location,
     });
-    await this.uploadRepository.save(newFile);
-    return newFile;
+    return await this.uploadRepository.save(newFile);
   }
 
   async deletePublicFile(filename: string) {

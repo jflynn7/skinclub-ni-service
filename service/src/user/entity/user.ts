@@ -10,7 +10,6 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { UserProfile } from '../../user-profile/entity/user-profile';
-import { IsEmail, IsStrongPassword } from 'class-validator';
 
 @Entity()
 export class User {
@@ -19,17 +18,9 @@ export class User {
    **=============================================*/
 
   @Column({ unique: true })
-  @IsEmail()
   email: string;
 
   @Column()
-  @IsStrongPassword({
-    minLength: 8,
-    minLowercase: 1,
-    minUppercase: 1,
-    minNumbers: 1,
-    minSymbols: 1,
-  })
   password: string;
 
   /**==============================================
