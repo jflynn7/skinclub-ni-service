@@ -17,7 +17,7 @@ export class ContentService {
   ) {}
 
   async getAllContent() {
-    return this.contentRepository.find({ relations: ['contentItems'] });
+    return this.contentRepository.find();
   }
 
   async setContentValue(contentKey: string, contentValue: Content) {
@@ -53,7 +53,6 @@ export class ContentService {
   private async findOneByContentKey(contentKey: string) {
     return this.contentRepository.findOne({
       where: { contentKey },
-      relations: ['contentItems'],
     });
   }
 }

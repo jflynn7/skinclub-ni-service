@@ -17,7 +17,7 @@ export class UserService {
   ) {}
 
   findAll(): Promise<User[]> {
-    return this.userRepository.find({ relations: ['userProfile'] });
+    return this.userRepository.find();
   }
 
   public async registerUser(user: User): Promise<ApiResponse<User>> {

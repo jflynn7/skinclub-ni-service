@@ -8,7 +8,6 @@ import { SuccessResponse } from '../../database/success-response';
 import { ErrorResponse } from '../../database/error-response';
 import { FileUpload } from '../../upload/model/file-upload.interface';
 import { UploadService } from '../../upload/service/upload.service';
-import { Upload } from '../../upload/entity/upload';
 
 @Injectable()
 export class UserProfileService {
@@ -22,7 +21,6 @@ export class UserProfileService {
   ): Promise<ApiResponse<UserProfile> | ErrorResponse<any>> {
     const user: User = await this.userRepository.findOne({
       where: { id: userId },
-      relations: ['userProfile.avatar'],
     });
     if (user) {
       return new SuccessResponse(200, user.userProfile);

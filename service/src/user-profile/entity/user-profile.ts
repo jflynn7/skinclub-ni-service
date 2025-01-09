@@ -48,7 +48,11 @@ export class UserProfile {
    * Relationships
    **=============================================*/
 
-  @OneToOne(() => Upload)
+  @OneToOne(() => Upload, {
+    onUpdate: 'CASCADE',
+    eager: true,
+    cascade: true,
+  })
   @JoinColumn()
   avatar?: Upload;
 

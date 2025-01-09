@@ -27,7 +27,7 @@ export class Content {
   @OneToMany(
     () => ContentItem,
     (contentItem: ContentItem) => contentItem.content,
-    { cascade: true, orphanedRowAction: 'delete' },
+    { cascade: true, eager: true, orphanedRowAction: 'delete' },
   )
   contentItems: ContentItem[];
 
