@@ -1,5 +1,5 @@
-import skinclubLogoWhite from '@/assets/skinclub-logo-white.png';
-import skinclubLogo from '@/assets/skinclub-logo.png';
+import skinclubLogoWhite from "@/assets/skinclub-logo-white.png";
+import skinclubLogo from "@/assets/skinclub-logo.png";
 
 export interface MetaConfig {
   logo: {
@@ -8,12 +8,22 @@ export interface MetaConfig {
   };
   title: string;
   metaKeywords: string[];
+  companyNumber: string;
 }
 export const metaConfig: MetaConfig = {
   logo: {
     lightSrc: skinclubLogo,
     darkSrc: skinclubLogoWhite,
   },
-  title: 'The Skin Club NI - Nurse Led Aesthetics',
-  metaKeywords: ['skincare', 'Bangor', 'North Down', 'Botox', 'Filler', 'Dermal', 'Dermilogica'],
+  title: "The Skin Club NI - Nurse Led Aesthetics",
+  metaKeywords: [
+    "skincare",
+    "Bangor",
+    "North Down",
+    "Botox",
+    "Filler",
+    "Dermal",
+    "Dermalogica",
+  ],
+  companyNumber: "123456789",
 };

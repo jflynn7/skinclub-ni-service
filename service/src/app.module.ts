@@ -13,6 +13,7 @@ import * as process from 'node:process';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ContentModule } from './content/content.module';
 import { UploadModule } from './upload/upload.module';
+import { InvoiceModule } from './invoice/invoice.module';
 import * as path from 'node:path';
 
 @Module({
@@ -31,6 +32,7 @@ import * as path from 'node:path';
     EmailModule,
     ContentModule,
     UploadModule,
+    InvoiceModule,
   ],
   controllers: [AppController],
   providers: [],

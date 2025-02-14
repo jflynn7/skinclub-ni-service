@@ -6,6 +6,7 @@ import { metaConfig } from "@/config/meta.config";
 import { ContentProvider } from "./context/content.context";
 import { Router } from "./Router";
 import { theme } from "./theme/theme";
+import SiteFooter from "@/components/SiteFooter/SiteFooter";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <ContentProvider>
         <SiteHeader metaConfig={metaConfig} />
         <Router />
+        <SiteFooter metaConfig={metaConfig} />
       </ContentProvider>
     </MantineProvider>
   );
