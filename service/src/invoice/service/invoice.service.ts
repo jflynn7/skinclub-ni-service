@@ -39,7 +39,15 @@ export class InvoiceService {
     const htmlContent = ejs.render(template, templateData);
 
     // Use Puppeteer to create a PDF from the HTML
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true, // ensure it's in headless mode
+      args: [
+        '--no-sandbox', // necessary for Heroku
+        '--disable-setuid-sandbox', // necessary for Heroku
+        '--disable-gpu', // applicable for some environments
+        '--disable-dev-shm-usage', // applicable for some environments
+      ],
+    });
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
     const pdfBufferUint8Array = await page.pdf({ format: 'A4' });
