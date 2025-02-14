@@ -15,7 +15,8 @@
     "start:local": "cd service && APP_ENV=local nest start --watch",
     "start:prod": "cd service && APP_ENV=production node dist/main",
     "build": "cd service && npm run build",
-    "start:client": "cd client && npm run dev"
+    "start:client": "cd client && npm run dev",
+    "test": "echo 'No tests specified' && exit 0"
   },
   "author": "",
   "license": "ISC"
